@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.xiyou.ssh.entities">
+    
+    <class name="Employee" table="EMPLOYEE">
+    	<id name="eId" type="java.lang.Integer">
+    		<column name="E_ID"></column>
+    		<generator class="native"></generator>
+    	</id>
+    	
+    	<property name="eName" type="java.lang.String">
+    		<column name="E_NAME"></column>
+    	</property>
+    	<property name="email" type="java.lang.String">
+    		<column name="EMAIL"></column>
+    	</property>
+    	<property name="birth" type="java.util.Date">
+    		<column name="BIRTH"></column>
+    	</property>
+    	<property name="createTime" type="java.util.Date">
+    	 	<column name="CREATE_TIME"></column>
+    	</property>
+    	<many-to-one name="dept" class="Departement">
+    		<column name="DEPT_ID"></column>
+    	</many-to-one>
+    </class>
+
+</hibernate-mapping>

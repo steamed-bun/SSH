@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean class="com.xiyou.ssh.dao.EmployeeDAO" id="employeeDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="employeeService" class="com.xiyou.ssh.service.EmployeeService">
+		<property name="empDAO" ref="employeeDAO"></property>
+	</bean>
+	
+	<bean class="com.xiyou.ssh.dao.DepartementDAO" id="departementDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean class="com.xiyou.ssh.service.DepartementService" id="departementService">
+		<property name="departementDAO" ref="departementDAO"></property>
+	</bean>
+	
+	<bean class="com.xiyou.ssh.action.EmployeeAction" id="employeeAction" scope="prototype">
+		<property name="empService" ref="employeeService"></property>
+		<property name="departementService" ref="departementService"></property>
+	</bean>
+    
+</beans>
